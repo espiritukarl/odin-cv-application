@@ -1,6 +1,7 @@
 import { useState } from "react";
 import cvData from "../data/data.json";
 import placeholder from "../data/placeholder.json";
+import "../styles/form.css";
 
 function Education({ updateCV }) {
   const [education, setEducation] = useState(cvData.education || []);
@@ -22,10 +23,11 @@ function Education({ updateCV }) {
     setInfo(placeholder.education);
   }
 
+  const isFormValid = Object.values(info).every((value) => value.trim() !== "");
+
   return (
     <>
-      <h2>Education</h2>
-      <section>
+      <section className="education">
         <input
           type="text"
           name="school"
@@ -41,20 +43,21 @@ function Education({ updateCV }) {
           onChange={handleChange}
         />
         <input
-          type="date"
+          type="text"
           name="startdate"
+          placeholder="Start date"
           value={info.startdate}
           onChange={handleChange}
         />
         <input
-          type="date"
+          type="text"
           name="enddate"
+          placeholder="End date"
           value={info.enddate}
           onChange={handleChange}
         />
 
-        <button className="edit">Edit</button>
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
           Add Education
         </button>
       </section>

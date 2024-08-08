@@ -1,0 +1,61 @@
+.general-info,
+.education,
+.work-experience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+input,
+textarea {
+  width: 320px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  border: 0px;
+  padding: 6px;
+  border-left: 1px solid rgba(0, 0, 0, 0.288);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.288);
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 120, 215, 0.5);
+}
+
+textarea {
+  height: 60px;
+  resize: none;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0.212);
+  border: 1px solid rgba(0, 0, 0, 0.219);
+  padding: 2.5px 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 3px rgba(0, 120, 215, 0.5);
+}
+
+button:disabled {
+  color: rgba(255, 255, 255, 0.514);
+  cursor: default;
+  background-color: rgba(255, 0, 0, 0.096);
+  box-shadow: 0 0 0;
+}

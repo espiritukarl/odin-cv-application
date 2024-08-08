@@ -8,14 +8,14 @@
     {
       "school": "University of Example",
       "title": "Bachelor of Science in Computer Science",
-      "startdate": "2015-09-01",
-      "enddate": "2019-06-30"
+      "startdate": "August 2015",
+      "enddate": "April 2019"
     },
     {
       "school": "Example University of Technology",
       "title": "Master of Science in Software Engineering",
-      "startdate": "2019-09-01",
-      "enddate": "2021-06-30"
+      "startdate": "August 2019",
+      "enddate": "April 2023"
     }
   ],
   "experience": [
@@ -23,8 +23,8 @@
       "company": "Tech Solutions Inc.",
       "position": "Software Engineer",
       "responsibilities": "Developed and maintained web applications, collaborated with cross-functional teams.",
-      "startdate": "2021-07-01",
-      "enddate": "2023-06-30"
+      "startdate": "September 2021",
+      "enddate": "March 2023"
     }
   ]
 }

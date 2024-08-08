@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../styles/GeneralInfo.css";
 import placeholder from "../data/placeholder.json";
+import "../styles/form.css";
 
 function GeneralInfo({ updateCV }) {
   const [info, setInfo] = useState(placeholder.generalInfo);
@@ -14,13 +14,14 @@ function GeneralInfo({ updateCV }) {
   }
 
   function handleSubmit() {
-    updateCV("generalInfo", info); // Update the 'generalInfo' section
+    updateCV("generalInfo", info);
+
+    setInfo(placeholder.generalInfo);
   }
 
   return (
     <>
-      <h2>General Information</h2>
-      <section>
+      <section className="general-info">
         <input
           type="text"
           id="name"
@@ -46,7 +47,6 @@ function GeneralInfo({ updateCV }) {
           onChange={handleChange}
         />
 
-        <button className="edit">Edit</button>
         <button type="submit" onClick={handleSubmit}>
           Submit
         </button>

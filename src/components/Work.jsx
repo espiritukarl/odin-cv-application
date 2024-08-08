@@ -1,6 +1,7 @@
 import { useState } from "react";
 import cvData from "../data/data.json";
 import placeholder from "../data/placeholder.json";
+import "../styles/form.css";
 
 function Work({ updateCV }) {
   const [experience, setExperience] = useState(cvData.experience || []);
@@ -22,10 +23,11 @@ function Work({ updateCV }) {
     setInfo(placeholder.experience);
   }
 
+  const isFormValid = Object.values(info).every((value) => value.trim() !== "");
+
   return (
     <>
-      <h2>Experience</h2>
-      <section>
+      <section className="work-experience">
         <input
           type="text"
           name="company"
@@ -37,31 +39,32 @@ function Work({ updateCV }) {
           type="text"
           name="position"
           value={info.position}
-          placeholder="Degree Name"
+          placeholder="Job Position"
+          onChange={handleChange}
+        />
+        <textarea
+          type="text"
+          name="responsibilities"
+          value={info.responsibilities}
+          placeholder="Main Responsibilities"
           onChange={handleChange}
         />
         <input
           type="text"
-          name="responsibilities"
-          value={info.responsibilities}
-          placeholder="Degree Name"
-          onChange={handleChange}
-        />
-        <input
-          type="date"
           name="startdate"
           value={info.startdate}
+          placeholder="Start date"
           onChange={handleChange}
         />
         <input
-          type="date"
+          type="text"
           name="enddate"
           value={info.enddate}
+          placeholder="End date"
           onChange={handleChange}
         />
 
-        <button className="edit">Edit</button>
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
           Add Experience
         </button>
       </section>

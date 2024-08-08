@@ -1,43 +1,119 @@
+import "../styles/displayCV.css";
+
 function DisplayCV({ cvData }) {
+  const putEducLine = cvData.education.length > 1;
+  const putExpLine = cvData.experience.length > 1;
+  const hasGeneralInfo = Object.values(cvData.generalInfo).every(
+    (value) => value === ""
+  );
+
   return (
-    <>
-      <h1>CV Display</h1>
+    <div className="display-cv roboto-thin">
       <h2>General Information</h2>
-      <p>Name: {cvData.generalInfo.name}</p>
-      <p>Email: {cvData.generalInfo.email}</p>
-      <p>Phone: {cvData.generalInfo.tel}</p>
+      {!hasGeneralInfo ? (
+        <article className="general-info-cv">
+          <p>
+            {cvData.generalInfo.name !== "" ? (
+              <>
+                {" "}
+                <span className="input-title">Name: </span>
+                <span className="data-cv poppins-regular">
+                  {cvData.generalInfo.name}
+                </span>
+              </>
+            ) : null}
+          </p>
+          <p>
+            {cvData.generalInfo.email !== "" ? (
+              <>
+                <span className="input-title">Email: </span>
+                <span className="data-cv poppins-regular">
+                  {cvData.generalInfo.email}
+                </span>
+              </>
+            ) : null}
+          </p>
+          <p>
+            {cvData.generalInfo.email !== "" ? (
+              <>
+                <span className="input-title">Phone: </span>
+                <span className="data-cv poppins-regular">
+                  {cvData.generalInfo.tel}
+                </span>
+              </>
+            ) : null}
+          </p>
+        </article>
+      ) : (
+        <article className="general-info-cvmissing-details  poppins-light-italic">
+          "No general information available"
+        </article>
+      )}
+
       <h2>Education</h2>
       {cvData.education.length > 0 ? (
         cvData.education.map((edu, index) => (
-          <div key={index}>
-            <p>Institution Name: {edu.school}</p>
-            <p>Degree Name: {edu.title}</p>
+          <article className="education-cv" key={index}>
             <p>
-              Date of Study: {edu.startdate} - {edu.enddate}
+              <span className="input-title">Institution Name: </span>
+              <span className="data-cv poppins-regular">{edu.school}</span>
             </p>
-            <hr />
-          </div>
+            <p>
+              <span className="input-title">Degree Name: </span>
+              <span className="data-cv poppins-regular">{edu.title}</span>
+            </p>
+            <p>
+              <span className="input-title">Date of Study: </span>
+              <span className="data-cv poppins-regular">
+                {edu.startdate} - {edu.enddate}
+              </span>
+            </p>
+            {putEducLine && index != cvData.education.length - 1 ? (
+              <hr />
+            ) : null}
+          </article>
         ))
       ) : (
-        <p>No education details available.</p>
+        <span className="missing-details poppins-light-italic">
+          No education details available.
+        </span>
       )}
+
       <h2>Work</h2>
       {cvData.experience.length > 0 ? (
         cvData.experience.map((work, index) => (
-          <div key={index}>
-            <p>Company Name: {work.company}</p>
-            <p>Position Title: {work.position}</p>
-            <p>Main Responsibilities: {work.responsibilities}</p>
+          <article className="experience-cv" key={index}>
             <p>
-              Date of Work: {work.startdate} - {work.enddate}
+              <span className="input-title">Company Name: </span>
+              <span className="data-cv poppins-regular">{work.company}</span>
             </p>
-            <hr />
-          </div>
+            <p>
+              <span className="input-title">Position Title: </span>
+              <span className="data-cv poppins-regular">{work.position}</span>
+            </p>
+            <p>
+              <span className="input-title">Main Responsibilities: </span>
+              <span className="data-cv poppins-regular">
+                {work.responsibilities}
+              </span>
+            </p>
+            <p>
+              <span className="input-title">Date of Work: </span>
+              <span className="data-cv poppins-regular">
+                {work.startdate} - {work.enddate}
+              </span>
+            </p>
+            {putExpLine && index != cvData.experience.length - 1 ? (
+              <hr />
+            ) : null}
+          </article>
         ))
       ) : (
-        <p>No work experience details available.</p>
+        <span className="missing-details poppins-light-italic">
+          No work experience details available.
+        </span>
       )}
-    </>
+    </div>
   );
 }
 

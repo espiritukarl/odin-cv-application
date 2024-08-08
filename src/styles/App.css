@@ -1,0 +1,33 @@
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  border-right: 1px solid rgba(0, 0, 0, 0.514);
+  border-radius: 35%;
+  box-shadow: 35px 0 35px rgba(0, 118, 215, 0.274);
+}
+
+main {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.component-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.component-header:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  box-shadow: 0 0 0;
+}

@@ -8,6 +8,11 @@ import "./styles/App.css";
 
 function App() {
   const [info, setInfo] = useState(cvData);
+  const [showButton, setShowButton] = useState({
+    showGeneralInfo: true,
+    showEducation: false,
+    showWork: false,
+  });
 
   function updateCV(section, data) {
     setInfo((prevInfo) => ({
@@ -16,12 +21,44 @@ function App() {
     }));
   }
 
+  function handleComponent(component) {
+    setShowButton((prevShowButton) => ({
+      ...prevShowButton,
+      [component]: !prevShowButton[component],
+    }));
+  }
+
   return (
     <>
-      <GeneralInfo updateCV={updateCV} />
-      <Education updateCV={updateCV} />
-      <Work updateCV={updateCV} />
-      <DisplayCV cvData={info} />
+      <section className="sidebar">
+        <button
+          className="component-header poppins-semibold"
+          onClick={() => handleComponent("showGeneralInfo")}
+        >
+          General Information
+        </button>
+        {showButton.showGeneralInfo && <GeneralInfo updateCV={updateCV} />}
+
+        <button
+          className="component-header poppins-semibold"
+          onClick={() => handleComponent("showEducation")}
+        >
+          Education
+        </button>
+        {showButton.showEducation && <Education updateCV={updateCV} />}
+
+        <button
+          className="component-header poppins-semibold"
+          onClick={() => handleComponent("showWork")}
+        >
+          Experience
+        </button>
+        {showButton.showWork && <Work updateCV={updateCV} />}
+      </section>
+
+      <main>
+        <DisplayCV cvData={info} />
+      </main>
     </>
   );
 }
