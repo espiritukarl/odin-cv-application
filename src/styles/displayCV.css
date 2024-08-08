@@ -55,3 +55,9 @@ h2 {
 hr {
   margin-top: 16px;
 }
+
+@media (min-width: 1600px) {
+  .display-cv {
+    width: 720px;
+  }
+}
