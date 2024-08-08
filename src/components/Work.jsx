@@ -1,11 +1,11 @@
-import { useState } from "react";
-import cvData from "../data/data.json";
+import { useState, useEffect } from "react";
 import placeholder from "../data/placeholder.json";
 import "../styles/form.css";
 
-function Work({ updateCV }) {
-  const [experience, setExperience] = useState(cvData.experience || []);
-  const [info, setInfo] = useState(placeholder.experience);
+function Work({ updateCV, workData, exp, index }) {
+  const [experience, setExperience] = useState(workData);
+  const [info, setInfo] = useState(exp);
+  const showAddWork = exp === placeholder.experience;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -13,6 +13,24 @@ function Work({ updateCV }) {
       ...prevInfo,
       [name]: value,
     }));
+  }
+
+  useEffect(() => {
+    setExperience(workData);
+  }, [workData]);
+
+  function editEntry() {
+    let updatedExperience = [...experience];
+    updatedExperience[index] = info;
+    setExperience(updatedExperience);
+    updateCV("experience", updatedExperience);
+  }
+
+  function removeEntry() {
+    let updatedExperience = [...experience];
+    updatedExperience.splice(index, 1);
+    setExperience(updatedExperience);
+    updateCV("experience", updatedExperience);
   }
 
   function handleSubmit() {
@@ -31,7 +49,7 @@ function Work({ updateCV }) {
         <input
           type="text"
           name="company"
-          value={info.school}
+          value={info.company}
           placeholder="Company Name"
           onChange={handleChange}
         />
@@ -64,9 +82,37 @@ function Work({ updateCV }) {
           onChange={handleChange}
         />
 
-        <button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
-          Add Experience
-        </button>
+        {!showAddWork && (
+          <div className="button-container">
+            <button
+              type="button"
+              onClick={editEntry}
+              disabled={!isFormValid}
+              className="section-edit roboto-medium"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              onClick={removeEntry}
+              disabled={!isFormValid}
+              className="section-remove roboto-medium"
+            >
+              Remove
+            </button>
+          </div>
+        )}
+
+        {showAddWork && (
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={!isFormValid}
+            className="section-submit roboto-medium"
+          >
+            Add Education
+          </button>
+        )}
       </section>
     </>
   );

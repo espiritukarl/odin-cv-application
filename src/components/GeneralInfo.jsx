@@ -47,8 +47,12 @@ function GeneralInfo({ updateCV }) {
           onChange={handleChange}
         />
 
-        <button type="submit" onClick={handleSubmit}>
-          Submit
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="section-submit roboto-medium"
+        >
+          Edit
         </button>
       </section>
     </>
