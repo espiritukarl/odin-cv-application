@@ -1,9 +1,9 @@
 import { useState } from "react";
-import placeholder from "../data/placeholder.json";
+import cvData from "../data/data.json";
 import "../styles/form.css";
 
 function GeneralInfo({ updateCV }) {
-  const [info, setInfo] = useState(placeholder.generalInfo);
+  const [info, setInfo] = useState(cvData.generalInfo);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -15,8 +15,6 @@ function GeneralInfo({ updateCV }) {
 
   function handleSubmit() {
     updateCV("generalInfo", info);
-
-    setInfo(placeholder.generalInfo);
   }
 
   return (
