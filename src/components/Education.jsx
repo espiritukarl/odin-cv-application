@@ -88,7 +88,6 @@ function Education({ updateCV, educationData, school, index }) {
             <button
               type="button"
               onClick={removeEntry}
-              disabled={!isFormValid}
               className="section-remove roboto-medium"
             >
               Remove

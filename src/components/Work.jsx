@@ -95,7 +95,6 @@ function Work({ updateCV, workData, exp, index }) {
             <button
               type="button"
               onClick={removeEntry}
-              disabled={!isFormValid}
               className="section-remove roboto-medium"
             >
               Remove
