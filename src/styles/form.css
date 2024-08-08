@@ -39,7 +39,9 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-.section-submit:hover {
+.section-submit:hover,
+.section-edit:hover,
+.section-remove:hover {
   cursor: pointer;
   box-shadow: 0 0 3px rgba(0, 120, 215, 0.5);
 }
