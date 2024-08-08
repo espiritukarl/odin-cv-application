@@ -1,0 +1,20 @@
+{
+  "generalInfo": {
+    "name": "",
+    "email": "",
+    "tel": ""
+  },
+  "education": {
+    "school": "",
+    "title": "",
+    "startdate": "",
+    "enddate": ""
+  },
+  "experience": {
+    "company": "",
+    "position": "",
+    "responsibilities": "",
+    "startdate": "",
+    "enddate": ""
+  }
+}
