@@ -66,6 +66,13 @@ function Education({ updateCV, educationData, school, index }) {
           value={info.enddate}
           onChange={handleChange}
         />
+        <input
+          type="text"
+          name="loc"
+          placeholder="Location"
+          value={info.loc}
+          onChange={handleChange}
+        />
 
         {!showAddEducation && (
           <div className="button-container">
