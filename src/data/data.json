@@ -2,7 +2,9 @@
   "generalInfo": {
     "name": "John Doe",
     "email": "john.doe@example.com",
-    "tel": "+1234567890"
+    "tel": "+1234567890",
+    "linkedin": "linkedin.com/johndoe",
+    "loc": "118 Dr. Jose Rizal St., Manila"
   },
   "education": [
     {

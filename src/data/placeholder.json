@@ -2,7 +2,9 @@
   "generalInfo": {
     "name": "",
     "email": "",
-    "tel": ""
+    "tel": "",
+    "linkedin": "",
+    "loc": ""
   },
   "education": {
     "school": "",
