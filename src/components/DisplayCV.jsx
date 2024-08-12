@@ -84,10 +84,6 @@ function DisplayCV({ cvData }) {
                 {edu.startdate} - {edu.enddate}
               </span>
             </div>
-
-            {putEducLine && index != cvData.education.length - 1 ? (
-              <hr />
-            ) : null}
           </article>
         ))
       ) : (
@@ -118,9 +114,6 @@ function DisplayCV({ cvData }) {
                 ))}
               </ul>
             </span>
-            {putExpLine && index != cvData.experience.length - 1 ? (
-              <hr />
-            ) : null}
           </article>
         ))
       ) : (
