@@ -31,25 +31,23 @@ textarea {
 }
 
 .section-submit,
-.section-edit,
-.section-remove {
+.section-edit {
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0.212);
   border: 1px solid rgba(0, 0, 0, 0.219);
+  margin-bottom: 32px;
 
   transition: all 0.3s ease-in-out;
 }
 
 .section-submit:hover,
-.section-edit:hover,
-.section-remove:hover {
+.section-edit:hover {
   cursor: pointer;
   box-shadow: 0 0 3px rgba(0, 120, 215, 0.5);
 }
 
 .section-submit:disabled,
-.section-edit:disabled,
-.section-remove:disabled {
+.section-edit:disabled {
   color: rgba(255, 255, 255, 0.514);
   cursor: default;
   background-color: rgba(255, 0, 0, 0.096);
@@ -59,15 +57,43 @@ textarea {
 input,
 textarea,
 .section-submit,
-.section-edit,
-.section-remove {
+.section-edit {
   box-sizing: border-box;
   width: var(--width);
   padding: 6px;
   border-radius: 5px;
 }
 
-.section-edit,
-.section-remove {
-  width: calc(var(--width) / 2);
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  padding: 6px;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: default;
+}
+
+.education-header:hover {
+  background-color: rgba(212, 212, 212, 0.534);
+}
+
+.section-remove:hover,
+.section-expand:hover {
+  cursor: pointer;
+}
+
+.education-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.new-form {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 4px;
 }
