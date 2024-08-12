@@ -9,6 +9,8 @@ import {
   mdiDeleteEmpty,
   mdiWindowMinimize,
   mdiWindowMaximize,
+  mdiWindowClose,
+  mdiPlusBox,
 } from "@mdi/js";
 
 function Education({ updateCV, educationData, school, index }) {
@@ -41,6 +43,7 @@ function Education({ updateCV, educationData, school, index }) {
     const updatedEducation = [...educationData, info];
     updateCV("education", updatedEducation);
 
+    handleEducationContent();
     setInfo(placeholder.education);
   }
 
@@ -74,13 +77,29 @@ function Education({ updateCV, educationData, school, index }) {
             />
           </span>
         </div>
+      ) : !showEducationContent ? (
+        <>
+          <span className="new-form">
+            <button
+              className="poppins-regular"
+              onClick={handleEducationContent}
+            >
+              <span>Add New School</span>
+              <Icon path={mdiPlusBox} size={0.85} />
+            </button>
+          </span>
+        </>
       ) : (
         <>
-          <span className="new-form poppins-regular">Add New School</span>
+          <span className="close-form">
+            <button onClick={handleEducationContent}>
+              <Icon path={mdiWindowClose} size={0.8} />
+            </button>
+          </span>
         </>
       )}
 
-      {(showEducationContent || showAddEducation) && (
+      {showEducationContent && (
         <section className="education">
           <input
             type="text"
