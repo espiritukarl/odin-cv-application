@@ -4,6 +4,7 @@ import "../styles/form.css";
 
 function GeneralInfo({ updateCV }) {
   const [info, setInfo] = useState(cvData.generalInfo);
+  const showGeneralInfo = info.name === "";
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -44,11 +45,27 @@ function GeneralInfo({ updateCV }) {
           placeholder="Telephone"
           onChange={handleChange}
         />
-
+        <input
+          type="tel"
+          id="tel"
+          name="tel"
+          value={info.linkedin}
+          placeholder="LinkedIn"
+          onChange={handleChange}
+        />
+        <input
+          type="tel"
+          id="tel"
+          name="tel"
+          value={info.loc}
+          placeholder="Location"
+          onChange={handleChange}
+        />
         <button
           type="button"
           onClick={handleSubmit}
           className="section-submit roboto-medium"
+          disabled={showGeneralInfo}
         >
           Edit
         </button>
