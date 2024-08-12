@@ -7,7 +7,7 @@ import cvData from "./data/data.json";
 import placeholder from "./data/placeholder.json";
 
 import Icon from "@mdi/react";
-import { mdiTriangleDownOutline } from "@mdi/js";
+import { mdiTriangleDown, mdiTriangleOutline } from "@mdi/js";
 import "./styles/App.css";
 import "./styles/index.css";
 
@@ -47,9 +47,12 @@ function App() {
           >
             General Information
             <Icon
-              path={mdiTriangleDownOutline}
+              path={
+                showButton.showGeneralInfo
+                  ? mdiTriangleOutline
+                  : mdiTriangleDown
+              }
               size={0.9}
-              vertical={showButton.showGeneralInfo ? true : false}
             />
           </button>
 
@@ -67,9 +70,10 @@ function App() {
           >
             Education
             <Icon
-              path={mdiTriangleDownOutline}
+              path={
+                showButton.showEducation ? mdiTriangleOutline : mdiTriangleDown
+              }
               size={0.9}
-              vertical={showButton.showEducation ? true : false}
             />
           </button>
 
@@ -105,9 +109,8 @@ function App() {
           >
             Experience
             <Icon
-              path={mdiTriangleDownOutline}
+              path={showButton.showWork ? mdiTriangleOutline : mdiTriangleDown}
               size={0.9}
-              vertical={showButton.showWork ? true : false}
             />
           </button>
           {showButton.showWork &&
