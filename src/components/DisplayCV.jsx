@@ -39,7 +39,7 @@ function DisplayCV({ cvData }) {
         <div className="general-info-cv">
           {cvData.generalInfo.linkedin !== "" ? (
             <div className="linkedin">
-              <i class="devicon-linkedin-plain"></i>
+              <i className="devicon-linkedin-plain"></i>
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.linkedin}
               </span>
@@ -47,7 +47,7 @@ function DisplayCV({ cvData }) {
           ) : null}
           {cvData.generalInfo.github !== "" ? (
             <div className="github">
-              <i class="devicon-github-plain"></i>
+              <i className="devicon-github-plain"></i>
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.github}
               </span>
