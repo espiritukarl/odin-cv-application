@@ -11,11 +11,13 @@ import {
   mdiPlusBox,
 } from "@mdi/js";
 import NewButton from "./FormBtn";
+import TextArea from "./TextArea";
 
 function Work({ updateCV, workData, exp, index }) {
   const [info, setInfo] = useState(exp);
   const [isHovered, setIsHovered] = useState(false);
   const [showWorkContent, setShowWorkContent] = useState(false);
+  const [newResponsibility, setNewResponsibility] = useState("");
   const showAddWork = exp === placeholder.experience;
 
   function handleChange(e) {
@@ -24,6 +26,56 @@ function Work({ updateCV, workData, exp, index }) {
       ...prevInfo,
       [name]: value,
     }));
+  }
+
+  function handleDescription(e) {
+    const { value } = e.target;
+    setNewResponsibility(value);
+  }
+
+  function addResponsibility() {
+    const updatedResponsibilities = [
+      ...info.responsibilities,
+      newResponsibility,
+    ];
+
+    setInfo((prevInfo) => ({
+      ...prevInfo,
+      responsibilities: updatedResponsibilities,
+    }));
+    responsibilityChanges(workData, updatedResponsibilities);
+  }
+
+  function updateResponsibility(data) {
+    const updatedResponsibilities = [...data];
+
+    setInfo((prevInfo) => ({
+      ...prevInfo,
+      responsibilities: updatedResponsibilities,
+    }));
+
+    let updatedExperience = [...workData];
+    updatedExperience[index] = {
+      ...info,
+      responsibilities: updatedResponsibilities,
+    };
+    responsibilityChanges(workData, updatedResponsibilities);
+  }
+
+  function removeResponsibility(idx) {
+    let updatedExperience = [...workData];
+    updatedExperience[index].responsibilities.splice(idx, 1);
+    updateCV("experience", updatedExperience);
+  }
+
+  function responsibilityChanges(data, updatedData) {
+    let updatedExperience = [...data];
+    updatedExperience[index] = {
+      ...info,
+      responsibilities: updatedData,
+    };
+
+    updateCV("experience", updatedExperience);
   }
 
   function editEntry() {
@@ -49,7 +101,13 @@ function Work({ updateCV, workData, exp, index }) {
     setShowWorkContent(!showWorkContent);
   }
 
-  const isFormValid = Object.values(info).every((value) => value.trim() !== "");
+  const isFormValid = [
+    "company",
+    "position",
+    "startdate",
+    "enddate",
+    "loc",
+  ].every((key) => info[key] && info[key].trim() !== "");
 
   return (
     <>
@@ -101,6 +159,7 @@ function Work({ updateCV, workData, exp, index }) {
             placeholder="Company Name"
             onChange={handleChange}
           />
+
           <input
             type="text"
             name="position"
@@ -108,13 +167,28 @@ function Work({ updateCV, workData, exp, index }) {
             placeholder="Job Position"
             onChange={handleChange}
           />
+
+          {exp.responsibilities.map((resp, i) => (
+            <div className="responsibilities" key={`${resp}${i}`}>
+              <TextArea
+                data={resp}
+                workData={exp}
+                index={i}
+                updateResponsibility={updateResponsibility}
+                removeResponsibility={removeResponsibility}
+              />
+            </div>
+          ))}
+
           <textarea
             type="text"
             name="responsibilities"
-            value={info.responsibilities}
+            value={newResponsibility}
             placeholder="Main Responsibilities"
-            onChange={handleChange}
+            onChange={handleDescription}
           />
+          <button onClick={addResponsibility}>Add Responsibility</button>
+
           <input
             type="text"
             name="startdate"
