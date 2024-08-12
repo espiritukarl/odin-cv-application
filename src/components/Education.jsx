@@ -23,7 +23,7 @@ function Education({ updateCV, educationData, school, index }) {
     const { name, value } = e.target;
     setInfo((prevInfo) => ({
       ...prevInfo,
-      [name]: value,list
+      [name]: value,
     }));
   }
 
