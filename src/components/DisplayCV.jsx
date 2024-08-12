@@ -1,54 +1,60 @@
 import "../styles/displayCV.css";
+import Icon from "@mdi/react";
+import { mdiEmail, mdiPhone, mdiHome } from "@mdi/js";
 
 function DisplayCV({ cvData }) {
   const putEducLine = cvData.education.length > 1;
   const putExpLine = cvData.experience.length > 1;
-  const hasGeneralInfo = Object.values(cvData.generalInfo).every(
-    (value) => value === ""
-  );
 
   return (
     <div className="display-cv roboto-thin">
-      <h2>General Information</h2>
-      {!hasGeneralInfo ? (
-        <article className="general-info-cv">
-          <p>
-            {cvData.generalInfo.name !== "" ? (
-              <>
-                {" "}
-                <span className="input-title">Name: </span>
-                <span className="data-cv poppins-regular">
-                  {cvData.generalInfo.name}
-                </span>
-              </>
-            ) : null}
-          </p>
-          <p>
-            {cvData.generalInfo.email !== "" ? (
-              <>
-                <span className="input-title">Email: </span>
-                <span className="data-cv poppins-regular">
-                  {cvData.generalInfo.email}
-                </span>
-              </>
-            ) : null}
-          </p>
-          <p>
-            {cvData.generalInfo.email !== "" ? (
-              <>
-                <span className="input-title">Phone: </span>
-                <span className="data-cv poppins-regular">
-                  {cvData.generalInfo.tel}
-                </span>
-              </>
-            ) : null}
-          </p>
-        </article>
-      ) : (
-        <article className="general-info-cvmissing-details  poppins-light-italic">
-          "No general information available"
-        </article>
-      )}
+      <article className="general-info-container">
+        <h1 className="data-cv poppins-semibold">{cvData.generalInfo.name}</h1>
+        <div className="general-info-cv">
+          {cvData.generalInfo.email !== "" ? (
+            <span className="email">
+              <Icon path={mdiEmail} size={1} />
+              <span className="data-cv poppins-regular">
+                {cvData.generalInfo.email}
+              </span>
+            </span>
+          ) : null}
+          {cvData.generalInfo.tel !== "" ? (
+            <span className="tel">
+              <Icon path={mdiPhone} size={1} />
+              <span className="data-cv poppins-regular">
+                {cvData.generalInfo.tel}
+              </span>
+            </span>
+          ) : null}
+          {cvData.generalInfo.loc !== "" ? (
+            <span className="loc">
+              <Icon path={mdiHome} size={1} />
+              <span className="data-cv poppins-regular">
+                {cvData.generalInfo.loc}
+              </span>
+            </span>
+          ) : null}
+        </div>
+        <div className="general-info-cv">
+          {cvData.generalInfo.linkedin !== "" ? (
+            <div className="linkedin">
+              <i class="devicon-linkedin-plain"></i>
+              <span className="data-cv poppins-regular">
+                {cvData.generalInfo.linkedin}
+              </span>
+            </div>
+          ) : null}
+          {cvData.generalInfo.github !== "" ? (
+            <div className="github">
+              <i class="devicon-github-plain"></i>
+              <span className="data-cv poppins-regular">
+                {cvData.generalInfo.github}
+              </span>
+            </div>
+          ) : null}
+        </div>
+      </article>
 
       <h2>Education</h2>
       {cvData.education.length > 0 ? (
