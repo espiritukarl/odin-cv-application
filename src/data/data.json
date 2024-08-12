@@ -12,13 +12,15 @@
       "school": "University of Example",
       "title": "Bachelor of Science in Computer Science",
       "startdate": "August 2015",
-      "enddate": "April 2019"
+      "enddate": "April 2019",
+      "loc": "Cambridge, MA"
     },
     {
       "school": "Example University of Technology",
       "title": "Master of Science in Software Engineering",
       "startdate": "August 2019",
-      "enddate": "April 2023"
+      "enddate": "April 2023",
+      "loc": "Cambridge, MA"
     }
   ],
   "experience": [
