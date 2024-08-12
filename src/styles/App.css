@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 32px;
+  gap: 16px;
 
   border-right: 1px solid rgba(0, 0, 0, 0.514);
   box-shadow: 15px 0 15px rgba(0, 118, 215, 0.274);

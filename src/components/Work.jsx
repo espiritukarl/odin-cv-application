@@ -1,9 +1,19 @@
 import { useState } from "react";
 import placeholder from "../data/placeholder.json";
 import "../styles/form.css";
+import Icon from "@mdi/react";
+import {
+  mdiDelete,
+  mdiDeleteEmpty,
+  mdiWindowMinimize,
+  mdiWindowMaximize,
+} from "@mdi/js";
+import NewButton from "./FormBtn";
 
 function Work({ updateCV, workData, exp, index }) {
   const [info, setInfo] = useState(exp);
+  const [isHovered, setIsHovered] = useState(false);
+  const [showWorkContent, setShowWorkContent] = useState(false);
   const showAddWork = exp === placeholder.experience;
 
   function handleChange(e) {
@@ -33,85 +43,102 @@ function Work({ updateCV, workData, exp, index }) {
     setInfo(placeholder.experience);
   }
 
+  function handleWorkContent() {
+    setShowWorkContent(!showWorkContent);
+  }
+
   const isFormValid = Object.values(info).every((value) => value.trim() !== "");
 
   return (
     <>
-      <section className="work-experience">
-        <input
-          type="text"
-          name="company"
-          value={info.company}
-          placeholder="Company Name"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="position"
-          value={info.position}
-          placeholder="Job Position"
-          onChange={handleChange}
-        />
-        <textarea
-          type="text"
-          name="responsibilities"
-          value={info.responsibilities}
-          placeholder="Main Responsibilities"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="startdate"
-          value={info.startdate}
-          placeholder="Start date"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="enddate"
-          value={info.enddate}
-          placeholder="End date"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="loc"
-          placeholder="Location"
-          value={info.loc}
-          onChange={handleChange}
-        />
-
-        {!showAddWork && (
-          <div className="button-container">
-            <button
-              type="button"
-              onClick={editEntry}
-              disabled={!isFormValid}
-              className="section-edit roboto-medium"
-            >
-              Edit
-            </button>
-            <button
-              type="button"
+      {!showAddWork ? (
+        <div className="education-header">
+          <span className="poppins-regular">{exp.company}</span>
+          <span className="education-button-container">
+            <Icon
+              path={showWorkContent ? mdiWindowMinimize : mdiWindowMaximize}
+              size={0.8}
+              onClick={handleWorkContent}
+              className="section-expand"
+            />
+            <Icon
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
               onClick={removeEntry}
-              className="section-remove roboto-medium"
-            >
-              Remove
-            </button>
-          </div>
-        )}
+              path={isHovered ? mdiDeleteEmpty : mdiDelete}
+              size={0.85}
+              className="section-remove"
+            />
+          </span>
+        </div>
+      ) : (
+        <>
+          <span className="new-form poppins-regular">Add New Company</span>
+        </>
+      )}
 
-        {showAddWork && (
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={!isFormValid}
-            className="section-submit roboto-medium"
-          >
-            Add Education
-          </button>
-        )}
-      </section>
+      {(showWorkContent || showAddWork) && (
+        <section className="work-experience">
+          <input
+            type="text"
+            name="company"
+            value={info.company}
+            placeholder="Company Name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="position"
+            value={info.position}
+            placeholder="Job Position"
+            onChange={handleChange}
+          />
+          <textarea
+            type="text"
+            name="responsibilities"
+            value={info.responsibilities}
+            placeholder="Main Responsibilities"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="startdate"
+            value={info.startdate}
+            placeholder="Start date"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="enddate"
+            value={info.enddate}
+            placeholder="End date"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="loc"
+            placeholder="Location"
+            value={info.loc}
+            onChange={handleChange}
+          />
+
+          {showAddWork ? (
+            <NewButton
+              onClick={handleSubmit}
+              isFormValid={isFormValid}
+              className="section-submit"
+              buttonText="Add Education"
+            />
+          ) : (
+            <NewButton
+              onClick={editEntry}
+              isFormValid={isFormValid}
+              className="section-edit"
+              buttonText="Edit"
+            />
+          )}
+        </section>
+      )}
     </>
   );
 }
