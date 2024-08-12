@@ -112,6 +112,11 @@ hr {
   margin-top: 4px;
 }
 
+.work-responsibility {
+  margin-top: 4px;
+  margin-left: 32px;
+}
+
 @media (min-width: 2000px) {
   .display-cv {
     width: 720px;

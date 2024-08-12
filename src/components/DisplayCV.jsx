@@ -111,8 +111,12 @@ function DisplayCV({ cvData }) {
                 {work.startdate} - {work.enddate}
               </span>
             </div>
-            <span className="poppins-regular">
-              <p>{work.responsibilities}</p>
+            <span className="cv-container">
+              <ul className="poppins-regular work-responsibility">
+                {work.responsibilities.map((resp, i) => (
+                  <li key={i}>{resp}</li>
+                ))}
+              </ul>
             </span>
             {putExpLine && index != cvData.experience.length - 1 ? (
               <hr />
