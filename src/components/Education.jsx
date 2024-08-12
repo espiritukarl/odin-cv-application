@@ -23,7 +23,7 @@ function Education({ updateCV, educationData, school, index }) {
     const { name, value } = e.target;
     setInfo((prevInfo) => ({
       ...prevInfo,
-      [name]: value,
+      [name]: value,list
     }));
   }
 
@@ -56,9 +56,9 @@ function Education({ updateCV, educationData, school, index }) {
   return (
     <>
       {!showAddEducation ? (
-        <div className="education-header">
+        <div className="list-header">
           <span className="poppins-regular">{school.school}</span>
-          <span className="education-button-container">
+          <span className="list-button-container">
             <Icon
               path={
                 showEducationContent ? mdiWindowMinimize : mdiWindowMaximize
