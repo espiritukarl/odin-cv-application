@@ -13,7 +13,7 @@ function DisplayCV({ cvData }) {
         <div className="general-info-cv">
           {cvData.generalInfo.email !== "" ? (
             <span className="email">
-              <Icon path={mdiEmail} size={1} />
+              <Icon path={mdiEmail} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.email}
               </span>
@@ -21,7 +21,7 @@ function DisplayCV({ cvData }) {
           ) : null}
           {cvData.generalInfo.tel !== "" ? (
             <span className="tel">
-              <Icon path={mdiPhone} size={1} />
+              <Icon path={mdiPhone} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.tel}
               </span>
@@ -29,7 +29,7 @@ function DisplayCV({ cvData }) {
           ) : null}
           {cvData.generalInfo.loc !== "" ? (
             <span className="loc">
-              <Icon path={mdiHome} size={1} />
+              <Icon path={mdiHome} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.loc}
               </span>

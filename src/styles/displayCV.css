@@ -25,11 +25,11 @@
   align-items: center;
   text-align: center;
 
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .general-info-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .general-info-cv {
@@ -62,12 +62,12 @@
 
 .general-info-cv,
 .linkedin {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 .devicon-linkedin-plain,
 .devicon-github-plain {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 h1,
