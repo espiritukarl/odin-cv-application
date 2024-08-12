@@ -69,7 +69,7 @@ textarea,
   border-radius: 5px;
 }
 
-.education-header {
+.list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,7 +80,7 @@ textarea,
   cursor: default;
 }
 
-.education-header:hover {
+.list-header:hover {
   background-color: rgba(212, 212, 212, 0.534);
 }
 
@@ -89,7 +89,7 @@ textarea,
   cursor: pointer;
 }
 
-.education-button-container {
+.list-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
