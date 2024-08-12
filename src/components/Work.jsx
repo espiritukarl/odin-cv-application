@@ -7,6 +7,8 @@ import {
   mdiDeleteEmpty,
   mdiWindowMinimize,
   mdiWindowMaximize,
+  mdiWindowClose,
+  mdiPlusBox,
 } from "@mdi/js";
 import NewButton from "./FormBtn";
 
@@ -52,9 +54,9 @@ function Work({ updateCV, workData, exp, index }) {
   return (
     <>
       {!showAddWork ? (
-        <div className="education-header">
+        <div className="list-header">
           <span className="poppins-regular">{exp.company}</span>
-          <span className="education-button-container">
+          <span className="list-button-container">
             <Icon
               path={showWorkContent ? mdiWindowMinimize : mdiWindowMaximize}
               size={0.8}
@@ -71,13 +73,26 @@ function Work({ updateCV, workData, exp, index }) {
             />
           </span>
         </div>
+      ) : !showWorkContent ? (
+        <>
+          <span className="new-form">
+            <button className="poppins-regular" onClick={handleWorkContent}>
+              <span>Add New Company</span>
+              <Icon path={mdiPlusBox} size={0.85} />
+            </button>
+          </span>
+        </>
       ) : (
         <>
-          <span className="new-form poppins-regular">Add New Company</span>
+          <span className="close-form">
+            <button onClick={handleWorkContent}>
+              <Icon path={mdiWindowClose} size={0.8} />
+            </button>
+          </span>
         </>
       )}
 
-      {(showWorkContent || showAddWork) && (
+      {showWorkContent && (
         <section className="work-experience">
           <input
             type="text"
@@ -127,7 +142,7 @@ function Work({ updateCV, workData, exp, index }) {
               onClick={handleSubmit}
               isFormValid={isFormValid}
               className="section-submit"
-              buttonText="Add Education"
+              buttonText="Add Work Experience"
             />
           ) : (
             <NewButton
