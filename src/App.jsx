@@ -96,7 +96,7 @@ function App() {
 
         <article
           className={
-            showButton.showEducation ? "component-shown" : "component-hidden"
+            showButton.showWork ? "component-shown" : "component-hidden"
           }
         >
           <button
