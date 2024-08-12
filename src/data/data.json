@@ -27,7 +27,10 @@
     {
       "company": "Tech Solutions Inc.",
       "position": "Software Engineer",
-      "responsibilities": "Developed and maintained web applications, collaborated with cross-functional teams.",
+      "responsibilities": [
+        "Developed and maintained web applications",
+        "collaborated with cross-functional teams."
+      ],
       "startdate": "September 2021",
       "enddate": "March 2023",
       "loc": "Boston, MA"
