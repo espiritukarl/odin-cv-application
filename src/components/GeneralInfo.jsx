@@ -47,6 +47,14 @@ function GeneralInfo({ updateCV }) {
         />
         <input
           type="text"
+          id="loc"
+          name="loc"
+          value={info.loc}
+          placeholder="Location"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
           id="linkedin"
           name="linkedin"
           value={info.linkedin}
@@ -55,10 +63,10 @@ function GeneralInfo({ updateCV }) {
         />
         <input
           type="text"
-          id="loc"
-          name="loc"
-          value={info.loc}
-          placeholder="Location"
+          id="github"
+          name="github"
+          value={info.github}
+          placeholder="GitHub"
           onChange={handleChange}
         />
         <button
