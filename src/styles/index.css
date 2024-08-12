@@ -10,6 +10,8 @@
   background: linear-gradient(45deg, #a8c0ff, #fbc2eb);
   height: 100vh;
   overflow: hidden;
+
+  --width: 320px;
 }
 
 /*ROBOTO FONT*/
@@ -192,4 +194,10 @@
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-style: italic;
+}
+
+@media (min-width: 2000px) {
+  #root {
+    --width: 480px;
+  }
 }

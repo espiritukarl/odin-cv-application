@@ -20,9 +20,11 @@ main {
 
 .component-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 0;
+  width: 100%;
+
+  padding: 24px;
   margin: 0;
 
   background-color: transparent;
@@ -30,13 +32,24 @@ main {
   font-size: 1.5rem;
 }
 
-.component-header:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.component-shown {
+  background-color: rgba(212, 212, 212, 0.534);
+  border-radius: 16px;
+  padding-bottom: 24px;
 }
 
 .component {
   background-color: white;
+}
+
+.component-hidden > .component-header:hover {
+  cursor: pointer;
+  background-color: rgba(212, 212, 212, 0.534);
+}
+
+.component-shown > .component-header:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Custom Scrollbar Styles */

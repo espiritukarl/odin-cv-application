@@ -15,7 +15,8 @@ textarea {
   border-left: 1px solid rgba(0, 0, 0, 0.288);
   border-bottom: 1px solid rgba(0, 0, 0, 0.288);
   border-radius: 5px;
-  background-color: transparent;
+  background-color: rgba(241, 241, 241, 0.74);
+  font-size: 16px;
 }
 
 input:focus,
@@ -61,12 +62,12 @@ textarea,
 .section-edit,
 .section-remove {
   box-sizing: border-box;
-  width: 320px;
+  width: var(--width);
   padding: 6px;
   border-radius: 5px;
 }
 
 .section-edit,
 .section-remove {
-  width: 160px;
+  width: calc(var(--width) / 2);
 }

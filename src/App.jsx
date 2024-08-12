@@ -5,6 +5,9 @@ import Education from "./components/Education";
 import Work from "./components/Work";
 import cvData from "./data/data.json";
 import placeholder from "./data/placeholder.json";
+
+import Icon from "@mdi/react";
+import { mdiTriangleDownOutline, mdiTriangleOutline } from "@mdi/js";
 import "./styles/App.css";
 import "./styles/index.css";
 
@@ -33,63 +36,100 @@ function App() {
   return (
     <>
       <section className="sidebar">
-        <button
-          className="component-header poppins-semibold"
-          onClick={() => handleComponent("showGeneralInfo")}
+        <article
+          className={
+            showButton.showGeneralInfo ? "component-shown" : "component-hidden"
+          }
         >
-          General Information
-        </button>
-        {showButton.showGeneralInfo && <GeneralInfo updateCV={updateCV} />}
-        <button
-          className="component-header poppins-semibold"
-          onClick={() => handleComponent("showEducation")}
+          <button
+            className="component-header poppins-semibold"
+            onClick={() => handleComponent("showGeneralInfo")}
+          >
+            General Information
+            <Icon
+              path={mdiTriangleDownOutline}
+              size={0.9}
+              vertical={showButton.showGeneralInfo ? true : false}
+            />
+          </button>
+
+          {showButton.showGeneralInfo && <GeneralInfo updateCV={updateCV} />}
+        </article>
+
+        <article
+          className={
+            showButton.showEducation ? "component-shown" : "component-hidden"
+          }
         >
-          Education
-        </button>
-        {showButton.showEducation &&
-          info.education.map((school, index) => {
-            return (
-              <Education
-                updateCV={updateCV}
-                educationData={info.education}
-                school={school}
-                index={index}
-                key={`${school.school}-${school.title}-${index}`}
-              />
-            );
-          })}
-        {showButton.showEducation && (
-          <Education
-            updateCV={updateCV}
-            educationData={info.education}
-            school={placeholder.education}
-          />
-        )}
-        <button
-          className="component-header poppins-semibold"
-          onClick={() => handleComponent("showWork")}
+          <button
+            className="component-header poppins-semibold"
+            onClick={() => handleComponent("showEducation")}
+          >
+            Education
+            <Icon
+              path={mdiTriangleDownOutline}
+              size={0.9}
+              vertical={showButton.showGeneralInfo ? true : false}
+            />
+          </button>
+
+          {showButton.showEducation &&
+            info.education.map((school, index) => {
+              return (
+                <Education
+                  updateCV={updateCV}
+                  educationData={info.education}
+                  school={school}
+                  index={index}
+                  key={`${school.school}-${school.title}-${index}`}
+                />
+              );
+            })}
+          {showButton.showEducation && (
+            <Education
+              updateCV={updateCV}
+              educationData={info.education}
+              school={placeholder.education}
+            />
+          )}
+        </article>
+
+        <article
+          className={
+            showButton.showEducation ? "component-shown" : "component-hidden"
+          }
         >
-          Experience
-        </button>
-        {showButton.showWork &&
-          info.experience.map((exp, index) => {
-            return (
-              <Work
-                updateCV={updateCV}
-                workData={info.experience}
-                exp={exp}
-                index={index}
-                key={`${exp.company}-${exp.position}-${index}`}
-              />
-            );
-          })}
-        {showButton.showWork && (
-          <Work
-            updateCV={updateCV}
-            workData={info.experience}
-            exp={placeholder.experience}
-          />
-        )}
+          <button
+            className="component-header poppins-semibold"
+            onClick={() => handleComponent("showWork")}
+          >
+            Experience
+            <Icon
+              path={mdiTriangleDownOutline}
+              size={0.9}
+              vertical={showButton.showWork ? true : false}
+            />
+          </button>
+          {showButton.showWork &&
+            info.experience.map((exp, index) => {
+              return (
+                <Work
+                  updateCV={updateCV}
+                  workData={info.experience}
+                  exp={exp}
+                  index={index}
+                  key={`${exp.company}-${exp.position}-${index}`}
+                />
+              );
+            })}
+          {showButton.showWork && (
+            <Work
+              updateCV={updateCV}
+              workData={info.experience}
+              exp={placeholder.experience}
+            />
+          )}
+        </article>
       </section>
 
       <main>
