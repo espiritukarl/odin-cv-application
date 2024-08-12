@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import placeholder from "../data/placeholder.json";
 import "../styles/form.css";
 
 function Education({ updateCV, educationData, school, index }) {
-  const [education, setEducation] = useState(educationData);
   const [info, setInfo] = useState(school);
   const showAddEducation = school === placeholder.education;
 
@@ -15,27 +14,20 @@ function Education({ updateCV, educationData, school, index }) {
     }));
   }
 
-  useEffect(() => {
-    setEducation(educationData);
-  }, [educationData]);
-
   function editEntry() {
-    let updatedEducation = [...education];
+    let updatedEducation = [...educationData];
     updatedEducation[index] = info;
-    setEducation(updatedEducation);
     updateCV("education", updatedEducation);
   }
 
   function removeEntry() {
-    let updatedEducation = [...education];
+    let updatedEducation = [...educationData];
     updatedEducation.splice(index, 1);
-    setEducation(updatedEducation);
     updateCV("education", updatedEducation);
   }
 
   function handleSubmit() {
-    const updatedEducation = [...education, info];
-    setEducation(updatedEducation);
+    const updatedEducation = [...educationData, info];
     updateCV("education", updatedEducation);
 
     setInfo(placeholder.education);

@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import placeholder from "../data/placeholder.json";
 import "../styles/form.css";
 
 function Work({ updateCV, workData, exp, index }) {
-  const [experience, setExperience] = useState(workData);
   const [info, setInfo] = useState(exp);
   const showAddWork = exp === placeholder.experience;
 
@@ -15,27 +14,20 @@ function Work({ updateCV, workData, exp, index }) {
     }));
   }
 
-  useEffect(() => {
-    setExperience(workData);
-  }, [workData]);
-
   function editEntry() {
-    let updatedExperience = [...experience];
+    let updatedExperience = [...workData];
     updatedExperience[index] = info;
-    setExperience(updatedExperience);
     updateCV("experience", updatedExperience);
   }
 
   function removeEntry() {
-    let updatedExperience = [...experience];
+    let updatedExperience = [...workData];
     updatedExperience.splice(index, 1);
-    setExperience(updatedExperience);
     updateCV("experience", updatedExperience);
   }
 
   function handleSubmit() {
-    const updatedExperience = [...experience, info];
-    setExperience(updatedExperience);
+    const updatedExperience = [...workData, info];
     updateCV("experience", updatedExperience);
 
     setInfo(placeholder.experience);
