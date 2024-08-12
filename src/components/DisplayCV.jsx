@@ -59,21 +59,32 @@ function DisplayCV({ cvData }) {
       <h2>Education</h2>
       {cvData.education.length > 0 ? (
         cvData.education.map((edu, index) => (
-          <article className="education-cv" key={index}>
-            <p>
-              <span className="input-title">Institution Name: </span>
-              <span className="data-cv poppins-regular">{edu.school}</span>
-            </p>
-            <p>
-              <span className="input-title">Degree Name: </span>
-              <span className="data-cv poppins-regular">{edu.title}</span>
-            </p>
-            <p>
-              <span className="input-title">Date of Study: </span>
-              <span className="data-cv poppins-regular">
+          <article
+            className={
+              index === cvData.education.length - 1
+                ? "education-cv add-margin-bottom"
+                : "education-cv"
+            }
+            key={index}
+          >
+            <div className="education-cv-container">
+              <span className="data-cv poppins-regular education-school">
+                {edu.school}
+              </span>
+              <span className="data-cv poppins-regular-italic education-loc">
+                {edu.loc}
+              </span>
+            </div>
+            <div className="education-cv-container">
+              <span className="data-cv poppins-light-italic education-title">
+                {edu.title}
+              </span>
+
+              <span className="data-cv poppins-regular-italic education-date">
                 {edu.startdate} - {edu.enddate}
               </span>
-            </p>
+            </div>
+
             {putEducLine && index != cvData.education.length - 1 ? (
               <hr />
             ) : null}

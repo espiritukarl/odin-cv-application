@@ -18,39 +18,6 @@
   border-radius: 5px;
 }
 
-.display-cv > p,
-.display-cv > * > p {
-  display: flex;
-  width: 100%;
-  margin: 5px 0;
-}
-
-.display-cv p span {
-  flex: 1;
-}
-
-.education-cv,
-.experience-cv {
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.missing-details {
-  text-align: center;
-}
-
-h2 {
-  background-color: rgba(128, 128, 128, 0.24);
-  padding: 8px 0;
-  width: 100%;
-  text-align: center;
-  font-size: 1.4rem;
-}
-
-hr {
-  margin-top: 16px;
-}
-
 .general-info-container > h1 {
   display: flex;
   justify-content: center;
@@ -95,6 +62,48 @@ hr {
 .devicon-linkedin-plain,
 .devicon-github-plain {
   font-size: 1.4rem;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+.education-cv,
+.experience-cv {
+  width: 100%;
+  text-align: left;
+}
+
+.add-margin-bottom {
+  margin-bottom: 16px;
+}
+
+.education-cv-container {
+  display: flex;
+  margin: 0;
+}
+
+.education-cv-container > span:nth-of-type(2) {
+  flex: 1;
+  text-align: right;
+}
+
+.missing-details {
+  text-align: center;
+}
+
+h2 {
+  padding: 1px 0;
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+
+  border-bottom: 1px solid black;
+}
+
+hr {
+  margin-top: 4px;
 }
 
 @media (min-width: 1600px) {
