@@ -140,3 +140,64 @@ textarea,
   background-color: rgba(238, 238, 238, 0.74);
   border-radius: 5px;
 }
+
+.work-responsibilities {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: calc(var(--width) - 32px);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: rgba(241, 241, 241, 0.74);
+}
+
+.work-responsibilities textarea {
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Ensures padding is included in width/height */
+}
+
+.work-responsibilities button {
+  width: 48%;
+  padding: 2px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.work-responsibilities button:hover {
+  background-color: #0056b3;
+}
+
+.work-responsibilities button:last-of-type {
+  background-color: #dc3545;
+}
+
+.work-responsibilities button:last-of-type:hover {
+  background-color: #c82333;
+}
+
+.responsibilities-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-responsibility {
+  border: none;
+  background-color: transparent;
+  transition: color 0.3s ease;
+}
+
+.add-responsibility:hover {
+  cursor: pointer;
+  color: rgb(0, 87, 0);
+}

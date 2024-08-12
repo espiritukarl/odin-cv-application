@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Icon from "@mdi/react";
+import { mdiTrashCanOutline } from "@mdi/js";
 
 function TextArea({
   data,
@@ -16,7 +18,7 @@ function TextArea({
   }
 
   return (
-    <>
+    <div className="work-responsibilities">
       <textarea
         type="text"
         name="responsibilities"
@@ -24,9 +26,13 @@ function TextArea({
         placeholder="Main Responsibilities"
         onChange={(event) => setResponsibility(event.target.value)}
       />
-      <button onClick={editResponsibility}>Edit</button>
-      <button onClick={() => removeResponsibility(index)}>Remove</button>
-    </>
+      <div className="responsibilities-button-container">
+        <button onClick={editResponsibility}>Edit</button>
+        <button onClick={() => removeResponsibility(index)}>
+          <Icon path={mdiTrashCanOutline} size={0.85} />
+        </button>
+      </div>
+    </div>
   );
 }
 

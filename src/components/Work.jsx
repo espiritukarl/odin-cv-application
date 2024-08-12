@@ -9,6 +9,7 @@ import {
   mdiWindowMaximize,
   mdiWindowClose,
   mdiPlusBox,
+  mdiPlusCircle,
 } from "@mdi/js";
 import NewButton from "./FormBtn";
 import TextArea from "./TextArea";
@@ -187,7 +188,9 @@ function Work({ updateCV, workData, exp, index }) {
             placeholder="Main Responsibilities"
             onChange={handleDescription}
           />
-          <button onClick={addResponsibility}>Add Responsibility</button>
+          <button className="add-responsibility" onClick={addResponsibility}>
+            <Icon path={mdiPlusCircle} size={1} />
+          </button>
 
           <input
             type="text"
