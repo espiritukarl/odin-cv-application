@@ -53,8 +53,8 @@ function App() {
                 updateCV={updateCV}
                 educationData={info.education}
                 school={school}
-                key={`${school.school}-${school.title}-${index}`}
                 index={index}
+                key={`${school.school}-${school.title}-${index}`}
               />
             );
           })}
@@ -78,10 +78,8 @@ function App() {
                 updateCV={updateCV}
                 workData={info.experience}
                 exp={exp}
-                key={`${exp.company}-${exp.position}-${index}`}
-                data={exp}
-                showAddWork={false}
                 index={index}
+                key={`${exp.company}-${exp.position}-${index}`}
               />
             );
           })}
