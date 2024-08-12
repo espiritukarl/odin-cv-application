@@ -65,22 +65,22 @@ function DisplayCV({ cvData }) {
                 ? "education-cv add-margin-bottom"
                 : "education-cv"
             }
-            key={index}
+            key={`${edu.school}${index}`}
           >
-            <div className="education-cv-container">
-              <span className="data-cv poppins-regular education-school">
+            <div className="cv-container">
+              <span className="poppins-regular education-school">
                 {edu.school}
               </span>
-              <span className="data-cv poppins-regular-italic education-loc">
+              <span className="poppins-regular-italic education-loc">
                 {edu.loc}
               </span>
             </div>
-            <div className="education-cv-container">
-              <span className="data-cv poppins-light-italic education-title">
+            <div className="cv-container">
+              <span className="poppins-light-italic education-title">
                 {edu.title}
               </span>
 
-              <span className="data-cv poppins-regular-italic education-date">
+              <span className="poppins-regular-italic education-date">
                 {edu.startdate} - {edu.enddate}
               </span>
             </div>
@@ -96,30 +96,24 @@ function DisplayCV({ cvData }) {
         </span>
       )}
 
-      <h2>Work</h2>
+      <h2>Work Experience</h2>
       {cvData.experience.length > 0 ? (
         cvData.experience.map((work, index) => (
-          <article className="experience-cv" key={index}>
-            <p>
-              <span className="input-title">Company Name: </span>
-              <span className="data-cv poppins-regular">{work.company}</span>
-            </p>
-            <p>
-              <span className="input-title">Position Title: </span>
-              <span className="data-cv poppins-regular">{work.position}</span>
-            </p>
-            <p>
-              <span className="input-title">Main Responsibilities: </span>
-              <span className="data-cv poppins-regular">
-                {work.responsibilities}
-              </span>
-            </p>
-            <p>
-              <span className="input-title">Date of Work: </span>
-              <span className="data-cv poppins-regular">
+          <article className="experience-cv" key={`${work.company}${index}`}>
+            <div className="cv-container">
+              <span className="poppins-regular">{work.company}</span>
+              <span className="poppins-regular-italic">{work.loc}</span>
+            </div>
+            <div className="cv-container">
+              <span className="poppins-light-italic">{work.position}</span>
+
+              <span className="poppins-regular-italic">
                 {work.startdate} - {work.enddate}
               </span>
-            </p>
+            </div>
+            <span className="poppins-regular">
+              <p>{work.responsibilities}</p>
+            </span>
             {putExpLine && index != cvData.experience.length - 1 ? (
               <hr />
             ) : null}

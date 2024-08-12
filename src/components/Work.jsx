@@ -73,6 +73,13 @@ function Work({ updateCV, workData, exp, index }) {
           placeholder="End date"
           onChange={handleChange}
         />
+        <input
+          type="text"
+          name="loc"
+          placeholder="Location"
+          value={info.loc}
+          onChange={handleChange}
+        />
 
         {!showAddWork && (
           <div className="button-container">

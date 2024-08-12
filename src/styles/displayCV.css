@@ -5,11 +5,12 @@
 .display-cv {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 16px;
 
   width: 600px;
+  min-height: 90vh;
   margin: 16px auto;
   background-color: white;
 
@@ -73,18 +74,19 @@ h2 {
 .experience-cv {
   width: 100%;
   text-align: left;
+  margin: 0;
 }
 
 .add-margin-bottom {
   margin-bottom: 16px;
 }
 
-.education-cv-container {
+.cv-container {
   display: flex;
   margin: 0;
 }
 
-.education-cv-container > span:nth-of-type(2) {
+.cv-container > span:nth-of-type(2) {
   flex: 1;
   text-align: right;
 }
@@ -106,7 +108,7 @@ hr {
   margin-top: 4px;
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 2000px) {
   .display-cv {
     width: 720px;
   }
