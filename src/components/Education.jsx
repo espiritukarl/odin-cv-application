@@ -80,65 +80,63 @@ function Education({ updateCV, educationData, school, index }) {
         </>
       )}
 
-      <>
-        {(showEducationContent || showAddEducation) && (
-          <section className="education">
-            <input
-              type="text"
-              name="school"
-              value={info.school}
-              placeholder="Institution Name"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="title"
-              value={info.title}
-              placeholder="Degree Name"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="startdate"
-              placeholder="Start date"
-              value={info.startdate}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="enddate"
-              placeholder="End date"
-              value={info.enddate}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="loc"
-              placeholder="Location"
-              value={info.loc}
-              onChange={handleChange}
-            />
+      {(showEducationContent || showAddEducation) && (
+        <section className="education">
+          <input
+            type="text"
+            name="school"
+            value={info.school}
+            placeholder="Institution Name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="title"
+            value={info.title}
+            placeholder="Degree Name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="startdate"
+            placeholder="Start date"
+            value={info.startdate}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="enddate"
+            placeholder="End date"
+            value={info.enddate}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="loc"
+            placeholder="Location"
+            value={info.loc}
+            onChange={handleChange}
+          />
 
-            {showAddEducation ? (
+          {showAddEducation ? (
+            <NewButton
+              onClick={handleSubmit}
+              isFormValid={isFormValid}
+              className="section-submit"
+              buttonText="Add Education"
+            />
+          ) : (
+            <>
               <NewButton
-                onClick={handleSubmit}
+                onClick={editEntry}
                 isFormValid={isFormValid}
-                className="section-submit"
-                buttonText="Add Education"
+                className="section-edit"
+                buttonText="Edit"
               />
-            ) : (
-              <>
-                <NewButton
-                  onClick={editEntry}
-                  isFormValid={isFormValid}
-                  className="section-edit"
-                  buttonText="Edit"
-                />
-              </>
-            )}
-          </section>
-        )}
-      </>
+            </>
+          )}
+        </section>
+      )}
     </>
   );
 }
