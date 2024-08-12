@@ -46,17 +46,17 @@ function GeneralInfo({ updateCV }) {
           onChange={handleChange}
         />
         <input
-          type="tel"
-          id="tel"
-          name="tel"
+          type="text"
+          id="linkedin"
+          name="linkedin"
           value={info.linkedin}
           placeholder="LinkedIn"
           onChange={handleChange}
         />
         <input
-          type="tel"
-          id="tel"
-          name="tel"
+          type="text"
+          id="loc"
+          name="loc"
           value={info.loc}
           placeholder="Location"
           onChange={handleChange}
