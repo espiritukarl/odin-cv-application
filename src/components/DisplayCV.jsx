@@ -3,56 +3,65 @@ import Icon from "@mdi/react";
 import { mdiEmail, mdiPhone, mdiHome } from "@mdi/js";
 
 function DisplayCV({ cvData }) {
-  const putEducLine = cvData.education.length > 1;
-  const putExpLine = cvData.experience.length > 1;
-
   return (
     <div className="display-cv roboto-thin">
       <article className="general-info-container">
         <h1 className="data-cv poppins-semibold">{cvData.generalInfo.name}</h1>
         <div className="general-info-cv">
-          {cvData.generalInfo.email !== "" ? (
-            <span className="email">
+          {cvData.generalInfo.email && (
+            <span
+              className={`email ${
+                cvData.generalInfo.tel || cvData.generalInfo.loc
+                  ? "show-border"
+                  : ""
+              }`}
+            >
               <Icon path={mdiEmail} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.email}
               </span>
             </span>
-          ) : null}
-          {cvData.generalInfo.tel !== "" ? (
-            <span className="tel">
+          )}
+          {cvData.generalInfo.tel && (
+            <span
+              className={`tel ${cvData.generalInfo.loc ? "show-border" : ""}`}
+            >
               <Icon path={mdiPhone} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.tel}
               </span>
             </span>
-          ) : null}
-          {cvData.generalInfo.loc !== "" ? (
+          )}
+          {cvData.generalInfo.loc && (
             <span className="loc">
               <Icon path={mdiHome} size={0.85} />
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.loc}
               </span>
             </span>
-          ) : null}
+          )}
         </div>
         <div className="general-info-cv">
-          {cvData.generalInfo.linkedin !== "" ? (
-            <div className="linkedin">
+          {cvData.generalInfo.linkedin && (
+            <div
+              className={`linkedin ${
+                cvData.generalInfo.github ? "show-border" : ""
+              }`}
+            >
               <i className="devicon-linkedin-plain"></i>
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.linkedin}
               </span>
             </div>
-          ) : null}
-          {cvData.generalInfo.github !== "" ? (
+          )}
+          {cvData.generalInfo.github && (
             <div className="github">
               <i className="devicon-github-plain"></i>
               <span className="data-cv poppins-regular">
                 {cvData.generalInfo.github}
               </span>
             </div>
-          ) : null}
+          )}
         </div>
       </article>
 

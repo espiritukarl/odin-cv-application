@@ -51,9 +51,7 @@
   align-items: center;
 }
 
-.email,
-.tel,
-.linkedin {
+.show-border {
   padding-right: 6px;
   border-right: 1px solid rgba(0, 0, 0, 0.548);
 }
