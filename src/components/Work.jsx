@@ -45,6 +45,7 @@ function Work({ updateCV, workData, exp, index }) {
       responsibilities: updatedResponsibilities,
     }));
     responsibilityChanges(workData, updatedResponsibilities);
+    setNewResponsibility("");
   }
 
   function updateResponsibility(data) {
