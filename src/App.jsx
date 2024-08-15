@@ -5,7 +5,7 @@ import Education from "./components/Education";
 import Work from "./components/Work";
 import cvData from "./data/data.json";
 import placeholder from "./data/placeholder.json";
-
+import useHover from "./hooks/useHover";
 import Icon from "@mdi/react";
 import {
   mdiTriangleDown,
@@ -25,18 +25,26 @@ function App() {
     showEducation: false,
     showWork: false,
   });
-  const [showSidebar, setshowSidebar] = useState(true);
-  const [isHovered, setIsHovered] = useState({
-    hoverGeneralInfo: false,
-    hoverEducation: false,
-    hoverWork: false,
-  });
+  const [showSidebar, setShowSidebar] = useState(true);
+
+  const [
+    hoverGeneralInfo,
+    handleMouseEnterGeneralInfo,
+    handleMouseLeaveGeneralInfo,
+  ] = useHover();
+  const [hoverEducation, handleMouseEnterEducation, handleMouseLeaveEducation] =
+    useHover();
+  const [hoverWork, handleMouseEnterWork, handleMouseLeaveWork] = useHover();
 
   function updateCV(section, data) {
     setInfo((prevInfo) => ({
       ...prevInfo,
       [section]: data,
     }));
+  }
+
+  function updateInfo(data) {
+    setInfo(data);
   }
 
   function handleComponent(component) {
@@ -46,21 +54,14 @@ function App() {
     }));
   }
 
-  function updateHoverState(section) {
-    setIsHovered((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-  }
-
-  function hoveredArrowUp(section) {
-    if (isHovered[section]) return mdiTriangle;
-    return mdiTriangleOutline;
-  }
-
-  function hoveredArrowDown(section) {
-    if (isHovered[section]) return mdiTriangleDown;
-    return mdiTriangleDownOutline;
+  function getIconPath(isHovered, isSectionVisible) {
+    return isSectionVisible
+      ? isHovered
+        ? mdiTriangle
+        : mdiTriangleOutline
+      : isHovered
+      ? mdiTriangleDown
+      : mdiTriangleDownOutline;
   }
 
   return (
@@ -71,7 +72,7 @@ function App() {
             path={mdiArrowLeft}
             size={1.5}
             className="sidebar-toggle"
-            onClick={() => setshowSidebar(!showSidebar)}
+            onClick={() => setShowSidebar(!showSidebar)}
           />
 
           <article
@@ -84,22 +85,17 @@ function App() {
             <button
               className="component-header poppins-semibold"
               onClick={() => handleComponent("showGeneralInfo")}
-              onMouseEnter={() => updateHoverState("hoverGeneralInfo")}
-              onMouseLeave={() => updateHoverState("hoverGeneralInfo")}
+              onMouseEnter={handleMouseEnterGeneralInfo}
+              onMouseLeave={handleMouseLeaveGeneralInfo}
             >
               General Information
               <Icon
-                path={
-                  showButton.showGeneralInfo
-                    ? hoveredArrowUp("hoverGeneralInfo")
-                    : hoveredArrowDown("hoverGeneralInfo")
-                }
+                path={getIconPath(hoverGeneralInfo, showButton.showGeneralInfo)}
                 size={0.9}
               />
             </button>
-
             {showButton.showGeneralInfo && (
-              <GeneralInfo updateCV={updateCV} cvData={info} />
+              <GeneralInfo updateCV={updateCV} cvData={info.generalInfo} />
             )}
           </article>
 
@@ -111,39 +107,32 @@ function App() {
             <button
               className="component-header poppins-semibold"
               onClick={() => handleComponent("showEducation")}
-              onMouseEnter={() => updateHoverState("hoverEducation")}
-              onMouseLeave={() => updateHoverState("hoverEducation")}
+              onMouseEnter={handleMouseEnterEducation}
+              onMouseLeave={handleMouseLeaveEducation}
             >
               Education
               <Icon
-                path={
-                  showButton.showEducation
-                    ? hoveredArrowUp("hoverEducation")
-                    : hoveredArrowDown("hoverEducation")
-                }
+                path={getIconPath(hoverEducation, showButton.showEducation)}
                 size={0.9}
               />
             </button>
-
             {showButton.showEducation && (
               <>
                 {JSON.stringify(info.education) !==
                   JSON.stringify(placeholder.education) &&
-                  info.education.map((school, index) => {
-                    return (
-                      <Education
-                        updateCV={updateCV}
-                        educationData={info.education}
-                        school={school}
-                        index={index}
-                        key={`${school.school}-${school.title}-${index}`}
-                      />
-                    );
-                  })}
+                  info.education.map((school, index) => (
+                    <Education
+                      updateCV={updateCV}
+                      educationData={info.education}
+                      school={school}
+                      index={index}
+                      key={`${school.school}-${school.title}-${index}`}
+                    />
+                  ))}
                 <Education
                   updateCV={updateCV}
                   educationData={info.education}
-                  school={placeholder.education}
+                  school={placeholder.education[0]}
                 />
               </>
             )}
@@ -157,51 +146,47 @@ function App() {
             <button
               className="component-header poppins-semibold"
               onClick={() => handleComponent("showWork")}
-              onMouseEnter={() => updateHoverState("hoverWork")}
-              onMouseLeave={() => updateHoverState("hoverWork")}
+              onMouseEnter={handleMouseEnterWork}
+              onMouseLeave={handleMouseLeaveWork}
             >
               Experience
               <Icon
-                path={
-                  showButton.showWork
-                    ? hoveredArrowUp("hoverWork")
-                    : hoveredArrowDown("hoverWork")
-                }
+                path={getIconPath(hoverWork, showButton.showWork)}
                 size={0.9}
               />
             </button>
-
             {showButton.showWork && (
               <>
                 {JSON.stringify(info.experience) !==
                   JSON.stringify(placeholder.experience) &&
-                  info.experience.map((exp, index) => {
-                    return (
-                      <Work
-                        updateCV={updateCV}
-                        workData={info.experience}
-                        exp={exp}
-                        index={index}
-                        key={`${exp.company}-${exp.position}-${index}`}
-                      />
-                    );
-                  })}
+                  info.experience.map((exp, index) => (
+                    <Work
+                      updateCV={updateCV}
+                      workData={info.experience}
+                      exp={exp}
+                      index={index}
+                      key={`${exp.company}-${exp.position}-${index}`}
+                    />
+                  ))}
                 <Work
                   updateCV={updateCV}
                   workData={info.experience}
-                  exp={placeholder.experience}
+                  exp={placeholder.experience[0]}
                 />
               </>
             )}
           </article>
 
           <div className="template-container">
-            <button className="roboto-medium" onClick={() => setInfo(cvData)}>
+            <button
+              className="roboto-medium"
+              onClick={() => updateInfo(cvData)}
+            >
               Load Sample CV
             </button>
             <button
               className="roboto-medium"
-              onClick={() => setInfo(placeholder)}
+              onClick={() => updateInfo(placeholder)}
             >
               Remove All Data
             </button>
@@ -215,7 +200,7 @@ function App() {
             path={mdiMenu}
             size={1.5}
             className="sidebar-toggle main"
-            onClick={() => setshowSidebar(!showSidebar)}
+            onClick={() => setShowSidebar(!showSidebar)}
           />
         )}
         <DisplayCV cvData={info} />
