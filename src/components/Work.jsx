@@ -234,7 +234,7 @@ function Work({ updateCV, workData, exp, index }) {
             />
           </label>
 
-          {showAddWork ? (
+          {!showAddWork ? (
             <NewButton
               onClick={handleSubmit}
               isFormValid={isFormValid}

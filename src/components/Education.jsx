@@ -154,7 +154,7 @@ function Education({ updateCV, educationData, school, index }) {
             />
           </label>
 
-          {showAddEducation ? (
+          {!showAddEducation ? (
             <NewButton
               onClick={handleSubmit}
               isFormValid={isFormValid}
