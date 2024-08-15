@@ -69,34 +69,37 @@ function DisplayCV({ cvData }) {
       <h2>Education</h2>
       {JSON.stringify(cvData.education) !==
         JSON.stringify(placeholder.education) && cvData.education.length > 0 ? (
-        cvData.education.map((edu, index) => (
-          <article
-            className={
-              index === cvData.education.length - 1
-                ? "education-cv add-margin-bottom"
-                : "education-cv"
-            }
-            key={`${edu.school}${index}`}
-          >
-            <div className="cv-container">
-              <span className="poppins-regular education-school">
-                {edu.school}
-              </span>
-              <span className="poppins-regular-italic education-loc">
-                {edu.loc}
-              </span>
-            </div>
-            <div className="cv-container">
-              <span className="poppins-light-italic education-title">
-                {edu.title}
-              </span>
+        cvData.education.map(
+          (edu, index) =>
+            edu.school && (
+              <article
+                className={
+                  index === cvData.education.length - 1
+                    ? "education-cv add-margin-bottom"
+                    : "education-cv"
+                }
+                key={`${edu.school}${index}`}
+              >
+                <div className="cv-container">
+                  <span className="poppins-regular education-school">
+                    {edu.school}
+                  </span>
+                  <span className="poppins-regular-italic education-loc">
+                    {edu.loc}
+                  </span>
+                </div>
+                <div className="cv-container">
+                  <span className="poppins-light-italic education-title">
+                    {edu.title}
+                  </span>
 
-              <span className="poppins-regular-italic education-date">
-                {edu.startdate} - {edu.enddate}
-              </span>
-            </div>
-          </article>
-        ))
+                  <span className="poppins-regular-italic education-date">
+                    {edu.startdate} - {edu.enddate}
+                  </span>
+                </div>
+              </article>
+            )
+        )
       ) : (
         <span className="missing-details poppins-light-italic">
           No education details available.
@@ -107,28 +110,36 @@ function DisplayCV({ cvData }) {
       {JSON.stringify(cvData.experience) !==
         JSON.stringify(placeholder.experience) &&
       cvData.experience.length > 0 ? (
-        cvData.experience.map((work, index) => (
-          <article className="experience-cv" key={`${work.company}${index}`}>
-            <div className="cv-container">
-              <span className="poppins-regular">{work.company}</span>
-              <span className="poppins-regular-italic">{work.loc}</span>
-            </div>
-            <div className="cv-container">
-              <span className="poppins-light-italic">{work.position}</span>
+        cvData.experience.map(
+          (work, index) =>
+            work.company && (
+              <article
+                className="experience-cv"
+                key={`${work.company}${index}`}
+              >
+                <div className="cv-container">
+                  <span className="poppins-regular">{work.company}</span>
+                  <span className="poppins-regular-italic">{work.loc}</span>
+                </div>
+                <div className="cv-container">
+                  <span className="poppins-light-italic">{work.position}</span>
 
-              <span className="poppins-regular-italic">
-                {work.startdate} - {work.enddate}
-              </span>
-            </div>
-            <span className="cv-container">
-              <ul className="poppins-regular work-responsibility">
-                {work.responsibilities.map((resp, i) => (
-                  <li key={i}>{resp}</li>
-                ))}
-              </ul>
-            </span>
-          </article>
-        ))
+                  <span className="poppins-regular-italic">
+                    {work.startdate} - {work.enddate}
+                  </span>
+                </div>
+                <span className="cv-container">
+                  {work.responsibilities.length > 0 && (
+                    <ul className="poppins-regular work-responsibility">
+                      {work.responsibilities.map((resp, i) => (
+                        <li key={i}>{resp}</li>
+                      ))}
+                    </ul>
+                  )}
+                </span>
+              </article>
+            )
+        )
       ) : (
         <span className="missing-details poppins-light-italic">
           No work experience details available.
