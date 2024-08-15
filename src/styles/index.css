@@ -12,6 +12,10 @@
   overflow: hidden;
 
   --width: 320px;
+  --blue: #0056b3;
+  --red: #c82333;
+  --hover-blue: #0061c9;
+  --hover-red: #d13c4b;
 }
 
 /*ROBOTO FONT*/
