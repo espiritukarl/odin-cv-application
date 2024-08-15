@@ -23,7 +23,7 @@ function TextArea({
         type="text"
         name="responsibilities"
         value={responsibility}
-        placeholder="Main Responsibilities"
+        placeholder="Edit previous entry..."
         onChange={(event) => setResponsibility(event.target.value)}
       />
       <div className="responsibilities-button-container">
