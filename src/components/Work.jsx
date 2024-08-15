@@ -95,7 +95,7 @@ function Work({ updateCV, workData, exp, index }) {
     if (action === "add") {
       updateCV("experience", [...workData, info]);
     } else if (action === "empty") {
-      updateCV("experience", [info]);
+      updateCV("experience", info);
     }
     setInfo(placeholder.experience[0]);
     setShowWorkContent(false);
@@ -116,9 +116,9 @@ function Work({ updateCV, workData, exp, index }) {
   return (
     <>
       {showAddWork
-        ? exp.company && (
+        ? info.company && (
             <div className="list-header">
-              <span className="poppins-regular">{exp.company}</span>
+              <span className="poppins-regular">{info.company}</span>
               <span className="list-button-container">
                 <Icon
                   path={showWorkContent ? mdiWindowMinimize : mdiWindowMaximize}
@@ -157,12 +157,12 @@ function Work({ updateCV, workData, exp, index }) {
           />
 
           <span>Job Responsibilities</span>
-          {exp.responsibilities &&
-            exp.responsibilities.map((resp, i) => (
+          {info.responsibilities &&
+            info.responsibilities.map((resp, i) => (
               <div className="responsibilities" key={`${resp}${i}`}>
                 <TextArea
                   data={resp}
-                  workData={exp}
+                  workData={info}
                   index={i}
                   updateResponsibility={updateResponsibility}
                   removeResponsibility={removeResponsibility}
