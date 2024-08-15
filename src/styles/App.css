@@ -5,7 +5,6 @@
   justify-content: flex-start;
   gap: 16px;
 
-  border-right: 1px solid rgba(0, 0, 0, 0.514);
   box-shadow: 15px 0 15px rgba(0, 118, 215, 0.274);
 
   overflow-y: auto;
@@ -43,11 +42,10 @@ main {
 }
 
 .component-hidden > .component-header:hover {
-  cursor: pointer;
   background-color: rgba(212, 212, 212, 0.534);
 }
 
-.component-shown > .component-header:hover {
+.component-header:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -76,4 +74,58 @@ main {
 main {
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.sidebar-toggle {
+  position: sticky;
+  top: 0;
+  min-height: 2.25rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  cursor: pointer;
+  color: #3b3b3b;
+}
+
+.sidebar-toggle.main {
+  position: absolute;
+  padding: 32px;
+}
+
+.template-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  gap: 8px;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.template-container > button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.template-container button:first-child {
+  background-color: var(--blue);
+}
+
+.template-container button:last-child {
+  background-color: var(--red);
+}
+
+.template-container button:first-child:hover {
+  background-color: var(--hover-blue);
+}
+
+.template-container button:last-child:hover {
+  background-color: var(--hover-red);
 }
