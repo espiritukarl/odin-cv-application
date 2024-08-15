@@ -1,4 +1,5 @@
 import "../styles/displayCV.css";
+import placeholder from "../data/placeholder.json";
 import Icon from "@mdi/react";
 import { mdiEmail, mdiPhone, mdiHome } from "@mdi/js";
 
@@ -66,7 +67,8 @@ function DisplayCV({ cvData }) {
       </article>
 
       <h2>Education</h2>
-      {cvData.education.length > 0 ? (
+      {JSON.stringify(cvData.education) !==
+        JSON.stringify(placeholder.education) && cvData.education.length > 0 ? (
         cvData.education.map((edu, index) => (
           <article
             className={
@@ -102,7 +104,9 @@ function DisplayCV({ cvData }) {
       )}
 
       <h2>Work Experience</h2>
-      {cvData.experience.length > 0 ? (
+      {JSON.stringify(cvData.experience) !==
+        JSON.stringify(placeholder.experience) &&
+      cvData.experience.length > 0 ? (
         cvData.experience.map((work, index) => (
           <article className="experience-cv" key={`${work.company}${index}`}>
             <div className="cv-container">
