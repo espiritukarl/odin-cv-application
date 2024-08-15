@@ -14,7 +14,7 @@ function TextArea({
   function editResponsibility() {
     let updatedResponsibilities = [...workData.responsibilities];
     updatedResponsibilities[index] = responsibility;
-    updateResponsibility(updatedResponsibilities, index);
+    updateResponsibility(updatedResponsibilities);
   }
 
   return (
