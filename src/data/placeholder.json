@@ -7,19 +7,23 @@
     "github": "",
     "loc": ""
   },
-  "education": {
-    "school": "",
-    "title": "",
-    "startdate": "",
-    "enddate": "",
-    "loc": ""
-  },
-  "experience": {
-    "company": "",
-    "position": "",
-    "responsibilities": [],
-    "startdate": "",
-    "enddate": "",
-    "loc": ""
-  }
+  "education": [
+    {
+      "school": "",
+      "title": "",
+      "startdate": "",
+      "enddate": "",
+      "loc": ""
+    }
+  ],
+  "experience": [
+    {
+      "company": "",
+      "position": "",
+      "responsibilities": [],
+      "startdate": "",
+      "enddate": "",
+      "loc": ""
+    }
+  ]
 }
