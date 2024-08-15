@@ -83,7 +83,7 @@ function Education({ updateCV, educationData, school, index }) {
       {showAddEducation
         ? info.school && (
             <div className="list-header">
-              <span className="poppins-regular">{school.school}</span>
+              <span className="poppins-regular">{info.school}</span>
               <span className="list-button-container">
                 <Icon
                   path={
