@@ -1,8 +1,8 @@
 # CV Application
 
 This is a project from [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-cv-application) curriculum, specifically within the React section. The goal of this project is to create a CV (Curriculum Vitae) application using React.
-Project Link: https://github.com/espiritukarl/odin-cv-application
-Project Preview: https://espiritu-cv-application.netlify.app/
+  Project Link: https://github.com/espiritukarl/odin-cv-application
+  Project Preview: https://espiritu-cv-application.netlify.app/
 
 ## Overview
 
